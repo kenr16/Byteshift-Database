@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :visits
+  has_many :visits, dependent: :destroy
   has_many :beacons, through: :visits
 
   validates :email, presence: true, uniqueness: true

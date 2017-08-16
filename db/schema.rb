@@ -34,14 +34,10 @@ ActiveRecord::Schema.define(version: 20170816192845) do
     t.date "day"
     t.datetime "enter_time"
     t.datetime "exit_time"
-    t.bigint "user_id"
-    t.bigint "beacon_id"
+    t.integer "user_id"
+    t.integer "beacon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["beacon_id"], name: "index_visits_on_beacon_id"
-    t.index ["user_id"], name: "index_visits_on_user_id"
   end
 
-  add_foreign_key "visits", "beacons"
-  add_foreign_key "visits", "users"
 end
