@@ -1,5 +1,3 @@
-require 'securerandom'
-
 User.destroy_all
 Beacon.destroy_all
 Visit.destroy_all
@@ -21,10 +19,9 @@ p "Made #{Beacon.all.length} beacons"
           first_name: firstName,
           last_name: lastName,
           status: ["Present", "Away", "Prefered"].sample,
-          email: "#{firstName}.#{lastName}#{i}@gmail.com",
-          uuid_number: SecureRandom.hex + "#{i}"
+          email: "#{firstName}.#{lastName}#{i}@gmail.com"
           )
-  p "Created #{user.first_name} #{user.last_name} with a status of #{user.status} and an email of #{user.email}. UUID = #{user.uuid_number}"
+  p "Created #{user.first_name} #{user.last_name} with a status of #{user.status} and an email of #{user.email}."
 end
 
 p "Made #{User.all.length} users"
