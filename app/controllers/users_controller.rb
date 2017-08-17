@@ -18,6 +18,12 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+  # Random /user/random
+  def random
+    @user = User.order("RANDOM()").limit(1)
+    render json: @user
+  end
+
   # GET /users/1
   def show
     render json: @user
