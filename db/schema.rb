@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170816192845) do
 
   create_table "beacons", force: :cascade do |t|
     t.string "name"
+    t.string "identification_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170816192845) do
     t.string "first_name"
     t.string "last_name"
     t.string "status"
+    t.string "uuid_number"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -34,10 +36,14 @@ ActiveRecord::Schema.define(version: 20170816192845) do
     t.date "day"
     t.datetime "enter_time"
     t.datetime "exit_time"
-    t.integer "user_id"
-    t.integer "beacon_id"
+    t.bigint "user_id"
+    t.bigint "beacon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["beacon_id"], name: "index_visits_on_beacon_id"
+    t.index ["user_id"], name: "index_visits_on_user_id"
   end
 
+  add_foreign_key "visits", "beacons"
+  add_foreign_key "visits", "users"
 end

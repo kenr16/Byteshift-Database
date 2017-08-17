@@ -1,10 +1,15 @@
+require 'securerandom'
+
 User.destroy_all
 Beacon.destroy_all
 Visit.destroy_all
 
 20.times do |i|
-  beacon = Beacon.create!(name: Faker::GameOfThrones.house + " #{i}")
-  p "#{beacon.name}"
+  beacon = Beacon.create!(
+            name: Faker::GameOfThrones.house + " #{i}",
+            identification_number: ("a".."z").to_a.sample + "#{i}"
+            )
+  p "#{beacon.name} ID: #{beacon.identification_number}"
 end
 
 p "Made #{Beacon.all.length} beacons"
@@ -16,9 +21,10 @@ p "Made #{Beacon.all.length} beacons"
           first_name: firstName,
           last_name: lastName,
           status: ["Present", "Away", "Prefered"].sample,
-          email: "#{firstName}.#{lastName}#{i}@gmail.com"
+          email: "#{firstName}.#{lastName}#{i}@gmail.com",
+          uuid_number: SecureRandom.hex + "#{i}"
           )
-  p "Created #{user.first_name} #{user.last_name} with a status of #{user.status} and an email of #{user.email}."
+  p "Created #{user.first_name} #{user.last_name} with a status of #{user.status} and an email of #{user.email}. UUID = #{user.uuid_number}"
 end
 
 p "Made #{User.all.length} users"
