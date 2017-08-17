@@ -8,6 +8,13 @@ class VisitsController < ApplicationController
     render json: @visits
   end
 
+  # Search /beacon/search?id={params}
+  def search
+    day = params[:day]
+    @visit = Visit.day_search(day)
+    render json: @visit
+  end
+
   # GET /visits/1
   def show
     render json: @visit

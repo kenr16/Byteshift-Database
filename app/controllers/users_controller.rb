@@ -8,10 +8,13 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-  # Search/search?email={params}
+  # Search /user/search?email={params}
   def search
-    email = params[:email]
-    @user = User.email_search(email)
+    if email = params[:email]
+      @user = User.email_search(email)
+    elsif status = params[:status]
+      @user = User.status_search(status)
+    end
     render json: @user
   end
 

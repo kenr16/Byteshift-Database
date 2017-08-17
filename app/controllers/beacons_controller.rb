@@ -8,6 +8,16 @@ class BeaconsController < ApplicationController
     render json: @beacons
   end
 
+  # Search /beacon/search?id={params}
+  def search
+    if id = params[:id]
+      @beacon = Beacon.id_search(id)
+    elsif name = params[:name]
+      @beacon = Beacon.name_search(name)
+    end
+    render json: @beacon
+  end
+
   # GET /beacons/1
   def show
     render json: @beacon

@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
 
   scope :email_search, -> (input) { where("email = ?", "#{input}")}
+  scope :status_search, -> (input) { where("status = ?", "#{input}")}
 end
