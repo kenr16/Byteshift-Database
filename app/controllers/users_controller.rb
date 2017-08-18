@@ -8,19 +8,18 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-  # Search /user/search?email={params}
+  # Search /user/search?query={params}
   def search
-    if email = params[:email]
-      @user = User.email_search(email)
-    elsif status = params[:status]
-      @user = User.status_search(status)
-    end
+    query = params[:query]
+    @user = User.search(query)
     render json: @user
   end
 
   # Random /user/random
   def random
-    @user = User.order("RANDOM()").limit(1)
+    # This is written to pull a random prefered user to reward. Can be changed or removed
+    users = User.where(status: "Prefered")
+    @user = users.sample
     render json: @user
   end
 

@@ -8,13 +8,10 @@ class BeaconsController < ApplicationController
     render json: @beacons
   end
 
-  # Search /beacon/search?id={params}
+  # Search /beacon/search?query={params}
   def search
-    if id = params[:id]
-      @beacon = Beacon.id_search(id)
-    elsif name = params[:name]
-      @beacon = Beacon.name_search(name)
-    end
+    query = params[:query]
+    @beacon = Beacon.search(query)
     render json: @beacon
   end
 

@@ -4,6 +4,7 @@ class Beacon < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  scope :id_search, -> (input) { where("identification_number = ?", "#{input}")}
-  scope :name_search, -> (input) { where("name = ?", "#{input}")}
+  scope :search, -> (input) do
+    Beacon.where(identification_number: "#{input}").or(Beacon.where(name: "#{input}"))
+  end
 end

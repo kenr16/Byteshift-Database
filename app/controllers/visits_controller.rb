@@ -8,10 +8,10 @@ class VisitsController < ApplicationController
     render json: @visits
   end
 
-  # Search /beacon/search?id={params}
+  # Search /beacon/search?query={params}
   def search
-    day = params[:day]
-    @visit = Visit.day_search(day)
+    query = params[:query]
+    @visit = Visit.search(query)
     render json: @visit
   end
 

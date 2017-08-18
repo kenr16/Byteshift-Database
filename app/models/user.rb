@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :first_name, :last_name, presence: true
 
-  scope :email_search, -> (input) { where("email = ?", "#{input}")}
-  scope :status_search, -> (input) { where("status = ?", "#{input}")}
+  scope :search, -> (input) do
+    User.where(email: "#{input}").or(User.where(status: "#{input.capitalize}"))
+  end
 end
