@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   # Random /user/random
   def random
     # This is written to pull a random prefered user to reward. Can be changed or removed
-    users = User.where(status: "Prefered")
+    users = User.where(status: "Prefered", presence: "Present")
     @user = users.sample
     render json: @user
   end
