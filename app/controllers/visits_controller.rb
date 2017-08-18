@@ -8,7 +8,7 @@ class VisitsController < ApplicationController
     render json: @visits
   end
 
-  # Search /beacon/search?query={params}
+  # Search /visit/search?query={params}
   def search
     query = params[:query]
     @visit = Visit.search(query)

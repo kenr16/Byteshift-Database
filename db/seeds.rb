@@ -18,7 +18,7 @@ p "Made #{Beacon.all.length} beacons"
   user = User.create!(
           first_name: firstName,
           last_name: lastName,
-          status: ["Prefered", "Standard"].sample,
+          status: ["Preferred", "Standard"].sample,
           presence: ["Present", "Away"].sample,
           email: "#{firstName.downcase}.#{lastName.downcase}#{i}@gmail.com"
           )
