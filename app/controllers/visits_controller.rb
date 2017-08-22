@@ -8,6 +8,13 @@ class VisitsController < ApplicationController
     render json: @visits
   end
 
+  # Search /visit/search?query={params}
+  def search
+    query = params[:query]
+    @visit = Visit.search(query)
+    render json: @visit
+  end
+
   # GET /visits/1
   def show
     render json: @visit
