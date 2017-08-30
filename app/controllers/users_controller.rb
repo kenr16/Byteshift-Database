@@ -23,6 +23,14 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+  # Check /user/check?email={params}&password={params}
+  def check
+    email = params[:email]
+    password = params[:password]
+    @user = User.check(email, password)
+    render json: @user
+  end
+
   # GET /users/1
   def show
     render json: @user

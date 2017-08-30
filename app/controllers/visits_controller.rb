@@ -22,7 +22,7 @@ class VisitsController < ApplicationController
 
   # POST /visits
   def create
-    @visit = Visit.new(visit_params)
+    @visit = Visit.new visit_params
 
     if @visit.save
       render json: @visit, status: :created, location: @visit

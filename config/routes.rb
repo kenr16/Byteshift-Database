@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'user/random' => 'users#random'
   get 'user/search' => 'users#search'
+  get 'user/check' => 'users#check'
 
   get 'beacon/search' => 'beacons#search'
 
