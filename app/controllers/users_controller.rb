@@ -27,8 +27,14 @@ class UsersController < ApplicationController
   def check
     email = params[:email]
     password = params[:password]
-    @user = User.check(email, password)
-    render json: @user
+    if User.check(email, password) != []
+      @user = User.check(email, password)
+      render json: @user
+    else
+      render status: 404, json: {
+         message: "No users matching email and password"
+      }
+    end
   end
 
   # GET /users/1
