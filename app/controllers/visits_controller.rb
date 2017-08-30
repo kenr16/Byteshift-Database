@@ -11,8 +11,14 @@ class VisitsController < ApplicationController
   # Search /visit/search?query={params}
   def search
     query = params[:query]
-    @visit = Visit.search(query)
-    render json: @visit
+    if Visit.search(query) != []
+      @visit = Visit.search(query)
+      render json: @visit
+    else
+      render status: 404, json: {
+        message: "No visits matching search terms"
+      }
+    end
   end
 
   # GET /visits/1

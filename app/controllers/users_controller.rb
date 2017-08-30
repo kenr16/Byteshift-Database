@@ -11,8 +11,14 @@ class UsersController < ApplicationController
   # Search /user/search?query={params}
   def search
     query = params[:query]
-    @user = User.search(query)
-    render json: @user
+    if User.search(query) != []
+      @user = User.search(query)
+      render json: @user
+    else
+      render status: 404, json: {
+         message: "No users matching search terms"
+      }
+    end
   end
 
   # Random /user/random
