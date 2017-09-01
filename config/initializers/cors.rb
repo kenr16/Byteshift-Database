@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://web.cecs.pdx.edu/'
+    origins 'http://web.cecs.pdx.edu/', 'https://byteshift-api-sg.herokuapp.com'
 
     resource '*',
       headers: :any,
