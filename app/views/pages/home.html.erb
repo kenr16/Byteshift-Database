@@ -2,5 +2,21 @@
 <h5>Navigate through data by selecting from links below</h5>
 
 <%= link_to "Users", users_path %>
+<%= link_to "Random Preferred User", user_random_path %>
 <%= link_to "Beacons", beacons_path %>
 <%= link_to "Visits", visits_path %>
+
+<br>
+<br>
+<br>
+<hr>
+
+<%= @user.first_name %> <%= @user.last_name %>
+
+<br>
+<br>
+
+<% @user.visits.each do |visit| %>
+  <%= visit.beacon.name %>
+  <br>
+<% end %>
